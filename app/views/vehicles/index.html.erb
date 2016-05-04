@@ -1,0 +1,24 @@
+<p>Table of vehicle</p>
+<table>
+	<tr>
+		<th>#</th>
+		<th>Наименование</th>
+		<th>Гос. номер</th>
+		<th>ПТС</th>
+		<th>Дата ПТС</th>
+		<th>Фото</th>
+		<th><%= link_to 'Новый', new_vehicle_path %></th>
+	</tr>
+	<tr>
+		<% @vehicles.each do |vehicle| %>
+			<td><%= vehicle.id %></td>
+			<td><%= vehicle.name %></td>
+			<td><%= vehicle.gos_num %></td>
+			<td><%= vehicle.pts %></td>
+			<td><%= vehicle.pts_date %></td>
+			<td>*</td>
+			<td><%= link_to 'Delete', vehicle_path(vehicle), method: :delete %></td>
+			<td><%= link_to 'Edit', edit_vehicle_path(vehicle) %></td>
+		<% end %>
+	</tr>
+</table>
