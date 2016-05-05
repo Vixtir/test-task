@@ -11,9 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 0) do
+=======
+ActiveRecord::Schema.define(version: 20160504194925) do
+>>>>>>> cc2b83a6ded1e43a0057a8d998379f0e526f5ae3
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
+=======
+  create_table "vehicles", force: :cascade do |t|
+    t.string   "name"
+    t.string   "gos_num"
+    t.string   "pts"
+    t.date     "pts_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+>>>>>>> cc2b83a6ded1e43a0057a8d998379f0e526f5ae3
 end
