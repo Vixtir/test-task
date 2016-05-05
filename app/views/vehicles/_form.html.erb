@@ -1,7 +1,8 @@
-<%= simple_form_for @vehicle do |f| %>
+<%= simple_form_for @vehicle, html: { multipart: true } do |f| %>
   <%= f.input :name %>
   <%= f.input :gos_num %>
   <%= f.input :pts %>
   <%= f.input :pts_date %>
+  <%= f.file_field :images, multiple: true %>
   <%= f.button :submit %>
 <% end %>
