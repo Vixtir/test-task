@@ -7,7 +7,7 @@ class VehiclesController < ApplicationController
 
 	def new
 		@vehicle = Vehicle.new
-		@vehicle.vehicle_attachments.build
+		5.times { @vehicle.vehicle_attachments.build }
 	end
 
 	def create
@@ -22,7 +22,7 @@ class VehiclesController < ApplicationController
 
 	def edit
 		@vehicle = Vehicle.find(params[:id])
-		@vehicle.vehicle_attachments.build
+		5.times { @vehicle.vehicle_attachments.build }
 	end
 
 	def update
