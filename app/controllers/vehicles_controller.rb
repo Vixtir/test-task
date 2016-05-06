@@ -7,16 +7,13 @@ class VehiclesController < ApplicationController
 
 	def new
 		@vehicle = Vehicle.new
-		@vehicle_attachment = @vehicle.vehicle_attachments.build
+		@vehicle.vehicle_attachments.build
 	end
 
 	def create
 		@vehicle = Vehicle.create(vehicle_params)
 
 		if @vehicle.save
-			params[:vehicle_attachments]['image'].each do |i|
-          		@vehicle_attachment = @vehicle.vehicle_attachments.create!(:image => i)
-       		end
 			redirect_to root_path
 		else
 			render 'new'
@@ -25,6 +22,7 @@ class VehiclesController < ApplicationController
 
 	def edit
 		@vehicle = Vehicle.find(params[:id])
+		@vehicle.vehicle_attachments.build
 	end
 
 	def update
