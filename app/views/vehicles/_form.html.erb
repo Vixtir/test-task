@@ -16,7 +16,7 @@
 	  		<%= f.input :pts_date, label: 'Дата ПТС', as: :date %>
 	  	</div>
 	</div><br>  
-	<%= f.fields_for :vehicle_attachments  do |asset_fields| %>
+	<%= f.fields_for :vehicle_attachments do |asset_fields| %>
 		<% unless asset_fields.object.new_record? %>
 				<%= link_to image_tag(asset_fields.object.image.url, class: "img-thumbnail"), asset_fields.object.image.url %>
 		<% end %>
