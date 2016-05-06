@@ -7,12 +7,16 @@ class VehiclesController < ApplicationController
 
 	def new
 		@vehicle = Vehicle.new
+		@vehicle_attachment = @vehicle.vehicle_attachments.build
 	end
 
 	def create
 		@vehicle = Vehicle.create(vehicle_params)
 
 		if @vehicle.save
+			params[:vehicle_attachments]['image'].each do |i|
+          		@vehicle_attachment = @vehicle.vehicle_attachments.create!(:image => i)
+       		end
 			redirect_to root_path
 		else
 			render 'new'
@@ -43,6 +47,6 @@ class VehiclesController < ApplicationController
 	private
 
 		def vehicle_params
-			params.require(:vehicle).permit(:name, :gos_num, :pts, :pts_date, images: [])
+			params.require(:vehicle).permit(:name, :gos_num, :pts, :pts_date, vehicle_attachments_attributes: [:id, :vehicle_id, :image])
 		end
 end

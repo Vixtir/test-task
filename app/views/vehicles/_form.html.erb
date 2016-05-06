@@ -1,8 +1,29 @@
-<%= simple_form_for @vehicle, html: { multipart: true } do |f| %>
-  <%= f.input :name %>
-  <%= f.input :gos_num %>
-  <%= f.input :pts %>
-  <%= f.input :pts_date %>
-  <%= f.file_field :images, multiple: true %>
-  <%= f.button :submit %>
-<% end %>
+<div class="container">
+	<%= simple_form_for @vehicle, html: { multipart: true } do |f| %>
+	  <%= f.input :name, label: 'Наименование автомобиля', input_html: { class: 'form-control' }, required: true %>
+	  <%= f.input :gos_num, label: 'Гос. номер', input_html: { class: 'form-control' } %>
+	  <%= f.input :pts, label: 'Номер ПТС', input_html: { class: 'form-control' } %>
+	  <%= f.input :pts_date, label: 'Дата ПТС', as: :date %>
+
+    <%= f.fields_for :vehicle_attachments do |p| %>
+     <div class="images">
+     	<div class="image">
+       		<%= p.label :image %><br>
+       		<%= p.file_field :image, :multiple => true, name: "vehicle_attachments[image][]" %>
+      	</div>
+     </div>
+   <% end %>
+
+	  <div class="add_image">...</div>
+	  <%= f.button :submit %> <%= link_to 'Назад', root_path %>
+	<% end %>
+	<% if @vehicle.images? %>
+		<div class="all_images">
+			<% @vehicle.images.each do |img| %>
+				<%= image_tag(img.url, class: "img_preview") %>
+			<% end %>
+		</div>
+	<% end %>	
+</div>
+
+

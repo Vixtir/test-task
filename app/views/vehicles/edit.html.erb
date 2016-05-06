@@ -1,1 +1,21 @@
-<%= render 'form' %>
+<p><%= @vehicle.name %> <%= @vehicle.pts %></p>
+<p><%= @vehicle.gos_num %> <%= @vehicle.pts_date %></p>
+<% if @vehicle.vehicle_attachments.any? %>
+	<div class="all_images">
+		<% @vehicle.vehicle_attachments.each do |img| %>
+			<%= image_tag(img.image_url, class: "img_preview") %>
+		<% end %>
+	</div>
+<% end %>
+
+<%= simple_form_for @vehicle, html: { multipart: true } do |f| %>
+  <%= f.fields_for :vehicle_attachments do |p| %>
+     <div class="images">
+      <div class="image">
+          <%= p.label :image %><br>
+          <%= p.file_field :image, :multiple => true, name: "vehicle_attachments[image][]" %>
+        </div>
+     </div>
+   <% end %>
+  <%= f.button :submit %> <%= link_to 'Назад', root_path %>
+<% end %>

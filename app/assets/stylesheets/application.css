@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+.all_images{
+	width: 1140px;
+	height: 300px;
+}
+.img_preview {
+	float: left;
+	margin: 5px;
+}
