@@ -1,24 +1,34 @@
-<p>Table of vehicle</p>
-<table>
-	<tr>
-		<th>#</th>
-		<th>Наименование</th>
-		<th>Гос. номер</th>
-		<th>ПТС</th>
-		<th>Дата ПТС</th>
-		<th>Фото</th>
-		<th><%= link_to 'Новый', new_vehicle_path %></th>
-	</tr>
-	<tr>
+<div class="container">
+	<table class="table table-bordered">
+		<tr>
+			<th>#</th>
+			<th>Наименование</th>
+			<th>Гос. номер</th>
+			<th>ПТС</th>
+			<th>Дата ПТС</th>
+			<th>Фото</th>
+			<th><%= link_to 'Новый', new_vehicle_path %></th>
+		</tr>
+		<tr>
 		<% @vehicles.each do |vehicle| %>
-			<td><%= vehicle.id %></td>
-			<td><%= vehicle.name %></td>
-			<td><%= vehicle.gos_num %></td>
-			<td><%= vehicle.pts %></td>
-			<td><%= vehicle.pts_date %></td>
-			<td>*</td>
-			<td><%= link_to 'Delete', vehicle_path(vehicle), method: :delete %></td>
-			<td><%= link_to 'Edit', edit_vehicle_path(vehicle) %></td>
+			<tr>
+				<td><%= vehicle.id %></td>
+				<td><%= vehicle.name %></td>
+				<td><%= vehicle.gos_num %></td>
+				<td><%= vehicle.pts %></td>
+				<td><%= vehicle.pts_date %></td>
+				<td>
+					<% if vehicle.vehicle_attachments.any? %>
+						<p> + </p>
+					<% else %>
+						<p> * </p>
+					<% end %>
+				</td>
+				<td><%= link_to 'Delete', vehicle_path(vehicle), method: :delete %> | <%= link_to 'Edit', edit_vehicle_path(vehicle) %></td>
+			</tr>
 		<% end %>
-	</tr>
-</table>
+		<tr>
+			<td> Всего: <%= Vehicle.count %> </td>
+		</tr>
+	</table>
+</div>
