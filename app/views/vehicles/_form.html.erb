@@ -15,8 +15,9 @@
 	  	<div class="col-md-4">
 	  		<%= f.input :pts_date, label: 'Дата ПТС', as: :date %>
 	  	</div>
-	</div><br>  
-	<%= f.fields_for :vehicle_attachments do |asset_fields| %>
+	</div><br>
+
+	<%= f.fields_for :vehicle_attachments, @vehicle.vehicle_attachments do |asset_fields| %>
 		<% unless asset_fields.object.new_record? %>
 				<%= link_to image_tag(asset_fields.object.image.url, class: "img-thumbnail"), asset_fields.object.image.url %>
 		<% end %>
@@ -24,7 +25,7 @@
 
 	<h4> Добавить изображений </h4>
 
-    <%= f.fields_for :vehicle_attachments do |asset_fields| %>
+    <%= f.fields_for :vehicle_attachments, @vehicle.vehicle_attachments do |asset_fields| %>
 		<% if asset_fields.object.new_record? %>
 			<p><%= asset_fields.file_field :image %></p>
 		<% end %>

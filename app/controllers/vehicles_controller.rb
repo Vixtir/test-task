@@ -16,6 +16,7 @@ class VehiclesController < ApplicationController
 		if @vehicle.save
 			redirect_to root_path
 		else
+			5.times { @vehicle.vehicle_attachments.build }
 			render 'new'
 		end
 	end
