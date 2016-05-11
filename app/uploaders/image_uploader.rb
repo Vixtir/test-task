@@ -1,7 +1,4 @@
-# encoding: utf-8
-
 class ImageUploader < CarrierWave::Uploader::Base
-
   include CarrierWave::RMagick
 
   storage :file
@@ -13,6 +10,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   process resize_to_fit:  [300, 300]
 
   version :thumb do
-    process :resize_to_fit => [50, 50]
+    process resize_to_fit:  [50, 50]
   end
 end
