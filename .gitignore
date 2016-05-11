@@ -13,3 +13,5 @@
 /tmp
 secrets.yml
 database.yml
+# Ignore application configuration
+/config/application.yml
