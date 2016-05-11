@@ -5,12 +5,18 @@
 	  	<%= f.input :name, label: 'Наименование автомобиля', input_html: { class: 'form-control' }, required: true %>
 	  </div>
 	  <div class="col-md-4">
-	  	<%= f.input :gos_num, label: 'Гос. номер', input_html: { class: 'form-control' } %>
+	  	<%= f.input :gos_num, 
+	  	            label: 'Гос. номер', 
+	  	            input_html: { class: 'form-control' },
+	  				placeholder: 'T118ЕЕ 16' %>
 	  </div>
 	</div><br>
 	<div class="row">
 		<div class="col-md-4">
-	  		<%= f.input :pts, label: 'Номер ПТС', input_html: { class: 'form-control' } %>
+	  		<%= f.input :pts, 
+	  					label: 'Номер ПТС', 
+	  					input_html: { class: 'form-control' },
+	  					placeholder: '23 TB 234234' %>
 	  	</div>
 	  	<div class="col-md-4">
 	  		<%= f.input :pts_date, label: 'Дата ПТС', as: :date %>
@@ -24,15 +30,22 @@
 	<% end %>
 
 	<h4> Добавить изображений </h4>
+	<div class="images">
+	  <div class="loader">
+        <%= f.fields_for :vehicle_attachments, @vehicle.vehicle_attachments do |asset_fields| %>
+          <% if asset_fields.object.new_record? %>
+		    <p><%= asset_fields.file_field :image %></p>
+		  <% end %>
+	    <% end %>
+	  </div>  
+	</div>
 
-    <%= f.fields_for :vehicle_attachments, @vehicle.vehicle_attachments do |asset_fields| %>
-		<% if asset_fields.object.new_record? %>
-			<p><%= asset_fields.file_field :image %></p>
-		<% end %>
-	<% end %>
-	
-	<%= f.button :submit %> <%= link_to 'Назад', root_path %>
-	<% end %>	
+	<div class="add_image">Добавить больше изображений</div>
+
+	<div class="action_btns">
+	  <%= f.button :submit %> <%= link_to 'Назад', root_path %>
+	  <% end %>
+	</div>	
 </div>
 
 

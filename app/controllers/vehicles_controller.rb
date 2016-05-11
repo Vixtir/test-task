@@ -7,7 +7,7 @@ class VehiclesController < ApplicationController
 
   def new
     @vehicle = Vehicle.new
-    5.times { @vehicle.vehicle_attachments.build }
+    2.times { @vehicle.vehicle_attachments.build }
   end
 
   def create
@@ -16,14 +16,14 @@ class VehiclesController < ApplicationController
     if @vehicle.save
       redirect_to root_path
     else
-      5.times { @vehicle.vehicle_attachments.build }
+      2.times { @vehicle.vehicle_attachments.build }
       render 'new'
     end
   end
 
   def edit
     @vehicle = Vehicle.find(params[:id])
-    5.times { @vehicle.vehicle_attachments.build }
+    2.times { @vehicle.vehicle_attachments.build }
   end
 
   def update
@@ -48,4 +48,5 @@ class VehiclesController < ApplicationController
   def vehicle_params
     params.require(:vehicle).permit(:name, :gos_num, :pts, :pts_date, vehicle_attachments_attributes: [:id, :vehicle_id, :image])
   end
+
 end

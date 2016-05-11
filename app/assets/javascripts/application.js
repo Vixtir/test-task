@@ -4,6 +4,6 @@
 
 $(document).ready(function(){
 	$('.add_image').on('click', function(){
-		$( '.images' ).append($('.image').html());
+		$( '.loader' ).append($('.loader').html());
 	});
 });
