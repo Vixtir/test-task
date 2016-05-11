@@ -16,6 +16,6 @@
 
 $(document).ready(function(){
 	$('.add_image').on('click', function(){
-		$( ".images" ).append($('.image').html());
-	})
-})
+		$( '.images' ).append($('.image').html());
+	};)
+};)
