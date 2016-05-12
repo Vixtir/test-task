@@ -23,27 +23,23 @@
 	  	</div>
 	</div><br>
 
-	<%= f.fields_for :vehicle_attachments, @vehicle.vehicle_attachments do |asset_fields| %>
-		<% unless asset_fields.object.new_record? %>
-				<%= link_to image_tag(asset_fields.object.image.url, class: "img-thumbnail"), asset_fields.object.image.url %>
+	<%= f.fields_for :vehicle_attachments do |ff| %>
+		<% unless ff.object.new_record? %>
+			  <%= link_to image_tag(ff.object.image.url, class: "img-thumbnail"), ff.object.image.url %><br>
+			  	<%= ff.check_box :_destroy %>
+              	<%= ff.label :_destroy, "Remove" %>
 		<% end %>
 	<% end %>
 
-	<h4> Добавить изображений </h4>
-	<div class="images">
-	  <div class="loader">
-        <%= f.fields_for :vehicle_attachments, @vehicle.vehicle_attachments do |asset_fields| %>
-          <% if asset_fields.object.new_record? %>
-		    <p><%= asset_fields.file_field :image %></p>
-		  <% end %>
-	    <% end %>
-	  </div>  
-	</div>
-
-	<div class="add_image">Добавить больше изображений</div>
+	<p>
+		<%= link_to_add_fields "Добавить изображение", f, :vehicle_attachments %>
+	</p>
 
 	<div class="action_btns">
-	  <%= f.button :submit %> <%= link_to 'Назад', root_path %>
+	  <%= f.button :submit, class: "btn btn-success" %>
+	  <button class="btn btn-default">
+	  	<%= link_to 'Назад', root_path %>
+	  </button> 
 	  <% end %>
 	</div>	
 </div>
