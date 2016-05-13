@@ -7,7 +7,7 @@ class VehiclesController < ApplicationController
 
   def new
     @vehicle = Vehicle.new
-    2.times { @vehicle.vehicle_attachments.build }
+    @vehicle.vehicle_attachments.build
   end
 
   def create
@@ -16,14 +16,14 @@ class VehiclesController < ApplicationController
     if @vehicle.save
       redirect_to root_path
     else
-      2.times { @vehicle.vehicle_attachments.build }
+      @vehicle.vehicle_attachments.build
       render 'new'
     end
   end
 
   def edit
     @vehicle = Vehicle.find(params[:id])
-    2.times { @vehicle.vehicle_attachments.build }
+    @vehicle.vehicle_attachments.build
   end
 
   def update
