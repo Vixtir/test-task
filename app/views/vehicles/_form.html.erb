@@ -1,4 +1,16 @@
 <div class="container">
+
+	<% if @vehicle.errors.any? %>
+  		<div class="alert alert-warning">
+    		<h4><%= @vehicle.errors.count %> ошибку(-ки) необхоходимо исправить для сохранения записи:</h2>
+ 			<ul>
+    			<% @vehicle.errors.full_messages.each do |msg| %>
+      				<li><%= msg %></li>
+    			<% end %>
+    		</ul>
+  		</div>
+	<% end %>
+
 	<%= simple_form_for @vehicle, :html => { :multipart => true } do |f| %>
 	<div class="row">
 	  <div class="col-md-4">
