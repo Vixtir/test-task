@@ -14,7 +14,6 @@ class VehiclesController < ApplicationController
     if @vehicle.save
       redirect_to root_path
     else
-
       render 'new'
     end
   end

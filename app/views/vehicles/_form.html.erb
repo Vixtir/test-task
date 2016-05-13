@@ -22,14 +22,13 @@
 	  		<%= f.input :pts_date, label: 'Дата ПТС', as: :date %>
 	  	</div>
 	</div><br>
-
-	<%= f.fields_for :vehicle_attachments do |ff| %>
-		<% unless ff.object.new_record? %>
-			  <%= link_to image_tag(ff.object.image.url, class: "img-thumbnail"), ff.object.image.url %>
-			  	<%= ff.check_box :_destroy %>
-              	<%= ff.label :_destroy, "Remove" %>
+	<div class="vehicle-images">
+		<% @vehicle.vehicle_attachments.each do |attach| %>
+			<span class="vehicle-image">
+				<%= image_tag(attach.image.url)%>
+			</span>
 		<% end %>
-	<% end %>
+	</div>	
 
 	<p>
 		<%= link_to_add_fields "Добавить изображение", f, :vehicle_attachments %>
