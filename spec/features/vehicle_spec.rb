@@ -52,11 +52,11 @@ RSpec.feature "Vehicle managment", type: 'feature' do
       end
     end
 
-    context "edit Vehicle" do      
+    context "edit Vehicle" do
       before :each do
         vehicle = create(:vehicle)
         visit root_path
-        click_on("Редактировать")	  	
+        click_on("Редактировать")
       end
 
       it "have a edit link" do
@@ -72,7 +72,7 @@ RSpec.feature "Vehicle managment", type: 'feature' do
     context "delete vehicle" do
       before :each do
         vehicle = create(:vehicle)
-        visit root_path	  	
+        visit root_path
       end
 
       it "have a delete link" do
