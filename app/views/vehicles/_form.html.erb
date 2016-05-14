@@ -20,7 +20,7 @@
 	  	            label: 'Гос. номер', 
 	  	            input_html: { class: 'form-control' },
 	  				placeholder: 'T116ЕЕ 16',
-	  				hint: "Только на латинице" %>
+	  				hint: " *Только на латинице" %>
 	  </div>
 	</div><br>
 	<div class="row">
@@ -28,7 +28,8 @@
 	  		<%= f.input :pts, 
 	  					label: 'Номер ПТС', 
 	  					input_html: { class: 'form-control' },
-	  					placeholder: '23 TB 234234' %>
+	  					placeholder: '23 TB 234234',
+	  					hint: " *Только на латинице" %>
 	  	</div>
 	  	<div class="col-md-4">
 	  		<%= f.input :pts_date, label: 'Дата ПТС', as: :date %>
