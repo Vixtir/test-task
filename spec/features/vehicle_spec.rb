@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "Vehicle managment", :type => :feature do
+RSpec.feature "Vehicle managment", type: 'feature' do
   context "root page" do
     it "has a create link" do
       visit root_path
@@ -52,13 +52,12 @@ RSpec.feature "Vehicle managment", :type => :feature do
       end
     end
 
-    context "edit Vehicle" do
-      
+    context "edit Vehicle" do      
       before :each do
         vehicle = create(:vehicle)
         visit root_path
         click_on("Редактировать")	  	
-      end 
+      end
 
       it "have a edit link" do
         expect(page).to have_button("Сохранить Автомобиль")
@@ -74,7 +73,7 @@ RSpec.feature "Vehicle managment", :type => :feature do
       before :each do
         vehicle = create(:vehicle)
         visit root_path	  	
-      end 
+      end
 
       it "have a delete link" do
         expect(page).to have_link("Удалить")
