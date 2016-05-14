@@ -1,4 +1,4 @@
-<div class="container">
+
 	<table class="table table-bordered">
 		<tr>
 			<th>#</th>
@@ -19,16 +19,15 @@
 				<td><%= vehicle.pts_date %></td>
 				<td>
 					<% if vehicle.vehicle_attachments.any? %>
-						<p> + </p>
+						<p> &#9745; </p>
 					<% else %>
-						<p> * </p>
+						<p> &#9744; </p>
 					<% end %>
 				</td>
-				<td><%= link_to 'Delete', vehicle_path(vehicle), method: :delete %> | <%= link_to 'Edit', edit_vehicle_path(vehicle) %></td>
+				<td><%= link_to 'Удалить', vehicle_path(vehicle), method: :delete %> | <%= link_to 'Редактировать', edit_vehicle_path(vehicle) %></td>
 			</tr>
 		<% end %>
 		<tr>
 			<td> Всего: <%= Vehicle.count %> </td>
 		</tr>
 	</table>
-</div>
