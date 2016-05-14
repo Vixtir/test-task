@@ -33,9 +33,9 @@ RSpec.feature "Vehicle managment", :type => :feature do
 
       it "valid informations" do
         within("#new_vehicle") do
-          fill_in 'Наименование автомобиля', :with => 'Jimmy'
-          fill_in 'Гос. номер', :with => 'A777AA 123'
-          fill_in 'Номер ПТС', :with => '16 ТВ 777777'
+          fill_in 'Наименование автомобиля', with: 'Jimmy'
+          fill_in 'Гос. номер', with: 'A777AA 123'
+          fill_in 'Номер ПТС',  with: '16 ТВ 777777'
         end
         click_on("Создать Автомобиль")
         expect(page).to have_content("Автомобиль успешно создан")
@@ -43,9 +43,9 @@ RSpec.feature "Vehicle managment", :type => :feature do
 
       it "invalid informations" do
         within("#new_vehicle") do
-          fill_in 'Наименование автомобиля', :with => 'Jimmy'
-          fill_in 'Гос. номер', :with => 'A777AA'
-          fill_in 'Номер ПТС', :with => '16 ТВ 777777'
+          fill_in 'Наименование автомобиля', with: 'Jimmy'
+          fill_in 'Гос. номер', with: 'A777AA'
+          fill_in 'Номер ПТС', with: '16 ТВ 777777'
         end
         click_on("Создать Автомобиль")
         expect(page).to have_content("необхоходимо исправить для сохранения записи")
@@ -71,15 +71,16 @@ RSpec.feature "Vehicle managment", :type => :feature do
     end
 
     context "delete vehicle" do
-      it "have a delete link" do
+      before :each do
         vehicle = create(:vehicle)
-        visit root_path
+        visit root_path	  	
+      end 
+
+      it "have a delete link" do
         expect(page).to have_link("Удалить")
       end
 
       it "press delete link" do
-        vehicle = create(:vehicle)
-        visit root_path
         click_on("Удалить")
         expect(page).to have_content("Автомобиль успешно удален")
       end
