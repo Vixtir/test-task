@@ -11,18 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160505205634) do
+ActiveRecord::Schema.define(version: 20160514115924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "photos", force: :cascade do |t|
-    t.string   "description"
-    t.string   "image"
-    t.integer  "vehicle_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
 
   create_table "vehicle_attachments", force: :cascade do |t|
     t.integer  "vehicle_id"
@@ -38,8 +30,6 @@ ActiveRecord::Schema.define(version: 20160505205634) do
     t.date     "pts_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "image"
-    t.json     "images"
   end
 
 end

@@ -35,13 +35,15 @@
 	  		<%= f.input :pts_date, label: 'Дата ПТС', as: :date %>
 	  	</div>
 	</div><br>
+	<% unless @vehicle.new_record? %>
 	<div class="vehicle-images">
 		<% @vehicle.vehicle_attachments.each do |attach| %>
 			<span class="vehicle-image">
 				<%= image_tag(attach.image.url)%>
 			</span>
 		<% end %>
-	</div>	
+	</div>
+	<% end %>	
 
 	<p>
 		<%= link_to_add_fields "Добавить изображение", f, :vehicle_attachments %>

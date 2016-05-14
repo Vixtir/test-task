@@ -35,7 +35,7 @@ RSpec.feature "Vehicle managment", type: 'feature' do
         within("#new_vehicle") do
           fill_in 'Наименование автомобиля', with: 'Jimmy'
           fill_in 'Гос. номер', with: 'A777AA 123'
-          fill_in 'Номер ПТС',  with: '16 ТВ 777777'
+          fill_in 'Номер ПТС',  with: '16 TB 777777'
         end
         click_on("Создать Автомобиль")
         expect(page).to have_content("Автомобиль успешно создан")
@@ -45,7 +45,7 @@ RSpec.feature "Vehicle managment", type: 'feature' do
         within("#new_vehicle") do
           fill_in 'Наименование автомобиля', with: 'Jimmy'
           fill_in 'Гос. номер', with: 'A777AA'
-          fill_in 'Номер ПТС', with: '16 ТВ 777777'
+          fill_in 'Номер ПТС', with: '16 TB 777777'
         end
         click_on("Создать Автомобиль")
         expect(page).to have_content("необхоходимо исправить для сохранения записи")
