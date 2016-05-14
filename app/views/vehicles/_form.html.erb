@@ -1,5 +1,4 @@
 <div class="container">
-
 	<% if @vehicle.errors.any? %>
   		<div class="alert alert-warning">
     		<h4><%= @vehicle.errors.count %> ошибку(-ки) необхоходимо исправить для сохранения записи:</h2>
@@ -10,7 +9,7 @@
     		</ul>
   		</div>
 	<% end %>
-
+	<div id="vehicle_form">
 	<%= simple_form_for @vehicle, :html => { :multipart => true } do |f| %>
 	<div class="row">
 	  <div class="col-md-4">
@@ -20,7 +19,8 @@
 	  	<%= f.input :gos_num, 
 	  	            label: 'Гос. номер', 
 	  	            input_html: { class: 'form-control' },
-	  				placeholder: 'T116ЕЕ 16' %>
+	  				placeholder: 'T116ЕЕ 16',
+	  				hint: "Только на латинице" %>
 	  </div>
 	</div><br>
 	<div class="row">
@@ -46,11 +46,7 @@
 		<%= link_to_add_fields "Добавить изображение", f, :vehicle_attachments %>
 	</p>
 
-	<div class="action_btns">
-	  <%= f.button :submit, class: "btn btn-success" %>
-	  <button class="btn btn-default">
-	  	<%= link_to 'Назад', root_path %>
-	  </button> 
-	  <% end %>
-	</div>	
+	  <%= f.submit %>
+	  <%= link_to 'Назад', root_path %>
+	<% end %>
 </div>

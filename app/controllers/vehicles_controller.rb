@@ -12,6 +12,7 @@ class VehiclesController < ApplicationController
   def create
     @vehicle = Vehicle.create(vehicle_params)
     if @vehicle.save
+      flash[:success] = "Автомобиль успешно создан"
       redirect_to root_path
     else
       render 'new'
@@ -22,6 +23,7 @@ class VehiclesController < ApplicationController
 
   def update
     if @vehicle.update(vehicle_params)
+      flash[:success] = "Автомобиль успешно отредактирован"
       redirect_to root_path
     else
       render 'edit'
@@ -30,6 +32,7 @@ class VehiclesController < ApplicationController
 
   def destroy
     @vehicle.destroy
+    flash[:success] = "Автомобиль успешно удален"
     redirect_to root_path
   end
 
